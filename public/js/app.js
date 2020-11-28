@@ -2133,24 +2133,78 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
-var addToCart = document.querySelectorAll('.add-to-cart');
-var cartCounter = document.querySelector('#cartCounter');
+var addToCart = document.querySelectorAll(".add-to-cart");
+var cartCounter = document.querySelector("#cartCounter");
 
-function updateCart(pizzaData) {
-  // axios
-  axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/update-cart', pizzaData).then(function (res) {
-    console.log(res);
+var updateCart = function updateCart(pizza) {
+  axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/update-cart", pizza).then(function (res) {
     cartCounter.innerText = res.data.totalQty;
   });
-}
+};
 
 addToCart.forEach(function (btn) {
-  btn.addEventListener('click', function (e) {
+  btn.addEventListener("click", function (e) {
+    e.preventDefault();
     var pizza = JSON.parse(btn.dataset.pizza);
-    updateCart(pizza);
     console.log(pizza);
+    updateCart(pizza);
   });
-});
+}); // const alertMsg = document.querySelector("#success-alert");
+// if (alertMsg) {
+//   setTimeout(() => {
+//     alertMsg.remove();
+//   }, 1000);
+// }
+// //Change Order Status
+// let statuses = document.querySelectorAll(".status_line");
+// let hiddenInput = document.querySelector("#hiddenInput");
+// let order = hiddenInput ? hiddenInput.value : null;
+// order = JSON.parse(order);
+// let time = document.createElement("small");
+// function updateStatus(order) {
+//   statuses.forEach((status) => {
+//     status.classList.remove("step-completed");
+//     status.classList.remove("current");
+//   });
+//   let stepCompleted = true;
+//   statuses.forEach((status) => {
+//     let dataProp = status.dataset.status;
+//     if (stepCompleted) {
+//       status.classList.add("step-completed");
+//     }
+//     if (dataProp === order.status) {
+//       stepCompleted = false;
+//       time.innerText = moment(order.updatedAt).format("hh:mm A");
+//       status.appendChild(time);
+//       if (status.nextElementSibling) {
+//         status.nextElementSibling.classList.add("current");
+//       }
+//     }
+//   });
+// }
+// updateStatus(order);
+// let socket = io();
+// if (order) {
+//   socket.emit("join", `order_${order._id}`);
+// }
+// let adminAreaPath = window.location.pathname;
+// if (adminAreaPath.includes("admin")) {
+//   initAdmin(socket);
+//   socket.emit("join", "adminRoom");
+// }
+// socket.on("orderUpdated", (data) => {
+//   const updatedOrder = { ...order };
+//   updatedOrder.updatedAt = moment().format();
+//   updatedOrder.status = data.status;
+//   updateStatus(updatedOrder);
+//   new Noty({
+//     progressBar: false,
+//     timeout: 500,
+//     text: "Order Updated",
+//     type: "success",
+//     layout: "topRight",
+//   }).show();
+// });
 
 /***/ }),
 
@@ -2172,8 +2226,8 @@ addToCart.forEach(function (btn) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Learning Things\Pizza App\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Learning Things\Pizza App\resources\scss\app.scss */"./resources/scss/app.scss");
+__webpack_require__(/*! C:\Users\rohit\OneDrive\Desktop\Realtime-PizzaApp-main\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\rohit\OneDrive\Desktop\Realtime-PizzaApp-main\resources\scss\app.scss */"./resources/scss/app.scss");
 
 
 /***/ })
